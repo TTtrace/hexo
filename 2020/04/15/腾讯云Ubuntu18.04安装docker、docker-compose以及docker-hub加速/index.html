@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		腾讯云Ubuntu18.04安装docker、docker-compose以及docker-hub加速 | 
+	 
+	tt的笔记库
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+  
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">tt的笔记库</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+		
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="text" placeholder="search...">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/04/25/hello-world/">
+										hello-world
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										test
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/02/19/test/%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/">
+										图床配置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2020/04/15/%E8%85%BE%E8%AE%AF%E4%BA%91Ubuntu18.04%E5%AE%89%E8%A3%85docker%E3%80%81docker-compose%E4%BB%A5%E5%8F%8Adocker-hub%E5%8A%A0%E9%80%9F/">
+										腾讯云Ubuntu18.04安装docker、docker-compose以及docker-hub加速
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	腾讯云Ubuntu18.04安装docker、docker-compose以及docker-hub加速
+</h1>
+<div class="article-meta">
+	
+	<span>monott</span>
+	<span>2020-04-15 11:43:07</span>
+    
+		<div id="article-categories">
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<h1 id="腾讯云Ubuntu18-04安装docker、docker-compose以及docker-hub加速"><a class="header-anchor" href="#腾讯云Ubuntu18-04安装docker、docker-compose以及docker-hub加速"></a>腾讯云Ubuntu18.04安装docker、docker-compose以及docker-hub加速</h1>
+<h2 id="改hosts访问github"><a class="header-anchor" href="#改hosts访问github"></a>改hosts访问github</h2>
+<p>直接无法访问<code>raw.github.com</code>，但我在移动宽带下是可以访问的，很奇怪。在<code>/etc/hosts</code>添加如下几行：</p>
+<pre><code>199.232.68.133 raw.githubusercontent.com
+151.101.108.133 raw.github.com
+192.30.253.112 github.com
+192.30.253.118 gist.github.com
+151.101.112.133 assets-cdn.github.com
+151.101.184.133 raw.githubusercontent.com
+151.101.112.133 gist.githubusercontent.com
+151.101.184.133 cloud.githubusercontent.com
+151.101.112.133 camo.githubusercontent.com
+151.101.112.133 avatars0.githubusercontent.com
+151.101.112.133 avatars1.githubusercontent.com
+151.101.184.133 avatars2.githubusercontent.com
+151.101.12.133 avatars3.githubusercontent.com
+151.101.12.133 avatars4.githubusercontent.com
+151.101.184.133 avatars5.githubusercontent.com
+151.101.184.133 avatars6.githubusercontent.com
+151.101.184.133 avatars7.githubusercontent.com
+151.101.12.133 avatars8.githubusercontent.com
+</code></pre>
+<h2 id="安装docker-engine"><a class="header-anchor" href="#安装docker-engine"></a>安装docker engine</h2>
+<h3 id="install-using-repository（官网办法）"><a class="header-anchor" href="#install-using-repository（官网办法）"></a>install using repository（<a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank" rel="noopener">官网办法</a>）</h3>
+<h4 id="SET-UP-THE-REPOSITORY"><a class="header-anchor" href="#SET-UP-THE-REPOSITORY"></a>SET UP THE REPOSITORY</h4>
+<ol>
+<li>
+<p>Update the <code>apt</code> package index and install packages to allow <code>apt</code> to use a repository over HTTPS:</p>
+<pre><code class="language-bash">sudo apt-get update
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+</code></pre>
+</li>
+<li>
+<p>Add Docker’s official GPG key:</p>
+<pre><code class="language-bash">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+</code></pre>
+<p>Verify that you now have the key with the fingerprint <code>9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88</code>, by searching for the last 8 characters of the fingerprint.</p>
+<pre><code class="language-bash">sudo apt-key fingerprint 0EBFCD88
+</code></pre>
+<p>会得到:</p>
+<pre><code>pub   rsa4096 2017-02-22 [SCEA]
+      9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+uid           [ unknown] Docker Release (CE deb) &lt;docker@docker.com&gt;
+sub   rsa4096 2017-02-22 [S]
+</code></pre>
+</li>
+<li>
+<p>Use the following command to set up the <strong>stable</strong> repository. To add the <strong>nightly</strong> or <strong>test</strong> repository, add the word <code>nightly</code> or <code>test</code> (or both) after the word <code>stable</code> in the commands below. <a href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener">Learn about <strong>nightly</strong> and <strong>test</strong> channels</a>.</p>
+<blockquote>
+<p><strong>Note</strong>: The <code>lsb_release -cs</code> sub-command below returns the name of your Ubuntu distribution, such as <code>xenial</code>. Sometimes, in a distribution like Linux Mint, you might need to change <code>$(lsb_release -cs)</code> to your parent Ubuntu distribution. For example, if you are using <code>Linux Mint Tessa</code>, you could use <code>bionic</code>. Docker does not offer any guarantees on untested and unsupported Ubuntu distributions.</p>
+</blockquote>
+<p>x86_64 / amd64:</p>
+<pre><code class="language-bash">sudo add-apt-repository \
+   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable&quot;
+</code></pre>
+</li>
+</ol>
+<h4 id="INSTALL-DOCKER-ENGINE"><a class="header-anchor" href="#INSTALL-DOCKER-ENGINE"></a>INSTALL DOCKER ENGINE</h4>
+<ol>
+<li>
+<p>Update the <code>apt</code> package index, and install the <em>latest version</em> of Docker Engine and containerd, or go to the next step to install a specific version:</p>
+<pre><code class="language-bash">sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+</code></pre>
+</li>
+<li>
+<p>安装特定版本docker，略了吧</p>
+</li>
+<li>
+<p>Verify that Docker Engine is installed correctly by running the <code>hello-world</code> image：</p>
+<pre><code class="language-bash">sudo docker run hello-world
+</code></pre>
+</li>
+</ol>
+<h3 id="卸载docker-engine"><a class="header-anchor" href="#卸载docker-engine"></a>卸载docker engine</h3>
+<ol>
+<li>
+<pre><code class="language-bash">sudo apt-get purge docker-ce docker-ce-cli containerd.io
+</code></pre>
+</li>
+<li>
+<pre><code class="language-bash">sudo rm -rf /var/lib/docker
+</code></pre>
+</li>
+</ol>
+<h2 id="安装docker-compose"><a class="header-anchor" href="#安装docker-compose"></a>安装docker-compose</h2>
+<p>按官网的办法会出现<code>Cannot open self /usr/local/bin/docker-compose</code>这样的问题，没有细究原因，按网上的办法直接下载<a href="https://github.com/docker/compose/releases/download/1.25.5/docker-compose-Linux-x86_64" target="_blank" rel="noopener">二进制文件</a>并改名放到<code>/usr/local/bin/docker-compose</code>下，再<code>sudo chmod +x /usr/local/bin/docker-compose</code>一下即可。</p>
+<p>可以用<code>docker-compose --version</code>验证。</p>
+<h2 id="使用腾讯云docker-hub镜像加速"><a class="header-anchor" href="#使用腾讯云docker-hub镜像加速"></a><a href="https://cloud.tencent.com/document/product/457/9113" target="_blank" rel="noopener">使用腾讯云docker-hub镜像加速</a></h2>
+<ol>
+<li>
+<p>创建或修改 <code>/etc/docker/daemon.json</code> 文件，并写入以下内容：</p>
+<pre><code class="language-bash">{
+   &quot;registry-mirrors&quot;: [
+       &quot;https://mirror.ccs.tencentyun.com&quot;
+  ]
+}
+</code></pre>
+</li>
+<li>
+<p>依次执行以下命令，重新启动 Docker 服务：</p>
+<pre><code class="language-bash">$ sudo systemctl daemon-reload
+$ sudo systemctl restart docker
+# Ubuntu16.04 请执行 sudo systemctl restart dockerd 命令
+</code></pre>
+</li>
+</ol>
+<h2 id="补充"><a class="header-anchor" href="#补充"></a>补充</h2>
+<h3 id="ERROR-Couldn’t-connect-to-Docker-daemon"><a class="header-anchor" href="#ERROR-Couldn’t-connect-to-Docker-daemon"></a>ERROR: Couldn’t connect to Docker daemon</h3>
+<p>docker-compose up时遇到的错误：</p>
+<pre><code class="language-bash">$ docker-compose up -d
+ERROR: Couldn't connect to Docker daemon at http+docker://localunixsocket - is it running?
+
+If it's at a non-standard location, specify the URL with the DOCKER_HOST environment variable.
+</code></pre>
+<p>可能的原因<a href="https://www.awaimai.com/2587.html" target="_blank" rel="noopener">这篇文章</a>总结得很好：</p>
+<ol>
+<li>
+<p>docker服务没启动，那就启动</p>
+<pre><code class="language-bash">sudo systemctl start docker     // 或者 sudo service docker start
+</code></pre>
+</li>
+<li>
+<p>docker服务启动了，但是一些缓存影响了，那就重启</p>
+<pre><code class="language-bash">sudo systemctl restart docker   // 或者 sudo service docker restart
+</code></pre>
+</li>
+<li>
+<p>当前用户不在<code>docker</code>用户组，那就把自己加到<code>docker</code>用户组</p>
+<pre><code class="language-bash">sudo gpasswd -a ${USER} docker
+</code></pre>
+<p>（不过我直接<code>sudo</code>了，这操作不规范啊。。）</p>
+</li>
+<li>
+<p>也许用sudo可能有效</p>
+<pre><code class="language-shell">sudo docker-compose up -d
+</code></pre>
+</li>
+<li>
+<p>docker-compose版本太老了，那就更新版本</p>
+<pre><code class="language-shell">sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+</code></pre>
+</li>
+<li>
+<p>重启系统。。</p>
+</li>
+</ol>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2020/04/25/hello-world/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  hello-world
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2020/02/19/test/%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/">
+                test
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			av: AV,
+			el: '#vcomments',
+			notify: false,
+			verify: false,
+			path: window.location.pathname,
+			appId: '',
+			appKey: '',
+			placeholder: '请输入评论',
+			avatar: 'retro',
+			recordIP: false
+		})
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">monott</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>
